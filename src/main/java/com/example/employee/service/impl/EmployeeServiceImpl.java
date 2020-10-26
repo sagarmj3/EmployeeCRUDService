@@ -38,12 +38,11 @@ public class EmployeeServiceImpl implements EmployeeService
 	public List<EmployeeDTO> getEmployeeDetails() {
 
 		List<EmployeeDTO> employeeDTOs = new ArrayList<>();
-		EmployeeDTO employeeDTO = new EmployeeDTO();
 		List<EmployeeEntity> employeeEntity = new ArrayList<>();;
  		
 		employeeEntity = employeeRepository.findAll();
 		
-		mapResponse(employeeDTOs, employeeDTO, employeeEntity);
+		mapResponse(employeeDTOs, employeeEntity);
 		
 		return employeeDTOs;
 	}
@@ -82,9 +81,11 @@ public class EmployeeServiceImpl implements EmployeeService
 		
 	}
 	
-	private void mapResponse(List<EmployeeDTO> employeeDTOs, EmployeeDTO employeeDTO, List<EmployeeEntity> employeeEntity) {
+	private void mapResponse(List<EmployeeDTO> employeeDTOs, List<EmployeeEntity> employeeEntity) {
 		if(null != employeeEntity) {
 			for(EmployeeEntity employee : employeeEntity) {
+
+				EmployeeDTO employeeDTO = new EmployeeDTO();
 				employeeDTO.setId(employee.getId());
 				employeeDTO.setFirstName(employee.getFirstName());
 				employeeDTO.setLastName(employee.getLastName());

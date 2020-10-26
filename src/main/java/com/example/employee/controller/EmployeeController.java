@@ -34,7 +34,7 @@ public class EmployeeController {
 
 		employeeDTO = employeeService.getEmployeeDetails();
 		
-		System.out.printf("Exiting getEmployeeDetails with employeeDTO: {}", employeeDTO);
+		System.out.printf("Exiting getEmployeeDetails");
 		
 		return employeeDTO;
 	}
@@ -42,7 +42,7 @@ public class EmployeeController {
 	@PostMapping("addEmployeeDetails")
 	public EmployeeDTO addEmployeeDetails(@RequestBody EmployeeDTO employeeDTO) {
 
-		System.out.printf("Entering addEmployeeDetails with employeeDTO: {}", employeeDTO);
+		System.out.printf("Entering addEmployeeDetails");
 		
 		EmployeeDTO employeeDTOResponse = new EmployeeDTO();
 		EmployeeVO employeeVO = new EmployeeVO();
@@ -53,7 +53,7 @@ public class EmployeeController {
 
 		BeanUtils.copyProperties(employeeVOResponse, employeeDTOResponse);
 
-		System.out.printf("Exiting addEmployeeDetails with employeeDTOResponse: {}", employeeDTOResponse);
+		System.out.printf("Exiting addEmployeeDetails");
 		
 		return employeeDTOResponse;
 	}
@@ -62,6 +62,8 @@ public class EmployeeController {
 	public EmployeeDTO updateEmployeeDetails(@PathVariable(value = "id") long id, 
 										@RequestBody EmployeeDTO employeeDTO) throws Exception {
 
+		System.out.printf("Entering updateEmployeeDetails");
+		
 		EmployeeDTO employeeDTOResponse = new EmployeeDTO();
 		EmployeeVO employeeVO = new EmployeeVO();
 
@@ -71,15 +73,21 @@ public class EmployeeController {
 		
 		BeanUtils.copyProperties(employeeVOResponse, employeeDTOResponse);
 		
+		System.out.printf("Exiting updateEmployeeDetails");
+		
 		return employeeDTOResponse;
 	}
 
 	@DeleteMapping("deleteEmployeeDetails/id/{id}")
 	public String deleteEmployeeDetails(@PathVariable(value = "id") long id) throws Exception {
 
+		System.out.printf("Entering deleteEmployeeDetails");
+		
 		employeeService.deleteEmployeeDetails(id);
 		
 		String response = "Deleted successfully!";
+		
+		System.out.printf("Exiting deleteEmployeeDetails");
 		
 		return response;
 	}
