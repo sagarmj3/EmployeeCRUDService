@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.example.employee.dto.EmployeeDTO;
 import com.example.employee.service.EmployeeService;
 import com.example.employee.vo.EmployeeVO;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("employee")
 public class EmployeeController {
@@ -39,6 +41,7 @@ public class EmployeeController {
 		return employeeDTO;
 	}
 
+	
 	@PostMapping("addEmployeeDetails")
 	public EmployeeDTO addEmployeeDetails(@RequestBody EmployeeDTO employeeDTO) {
 
